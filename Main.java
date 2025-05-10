@@ -16,7 +16,6 @@ public class Main {
                 switch (choice) {
                     // this case operation add an order that is attached to the customer
                     case 1:
-                        boolean isTrue = false;
                         System.out.print("Customer Name: ");
                         String name = scanner.nextLine();
                         System.out.print("Customer ID: ");
@@ -24,21 +23,17 @@ public class Main {
                         Customer customer = new Customer(name, id);
                         Order order = new Order(customer);
 
-                        // this loop will ask the user to keep ordering until the user input done
-                        while (!isTrue) {
-                            System.out.print("Product Name: ");
-                            String product = scanner.nextLine();
+                       
+                         System.out.print("Product Name: ");
+                        String product = scanner.nextLine();
+                        System.out.print("Quantity: ");
+                        int qty = scanner.nextInt();
+                        System.out.print("Price: ");
+                        double price = scanner.nextDouble();
+                        scanner.nextLine(); //
 
+                        order.addItem(new OrderItem(product, qty, price));
 
-                            System.out.print("Quantity: ");
-                            int qty = scanner.nextInt();
-                            System.out.print("Price: ");
-                            double price = scanner.nextDouble();
-                            scanner.nextLine(); //
-
-                            order.addItem(new OrderItem(product, qty, price));
-                            isTrue = true;
-                        }
 
                         manager.addOrder(order);
                         break;
